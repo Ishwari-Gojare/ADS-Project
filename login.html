@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-container mt-5">
+  <h2 class="text-center mb-4">Login</h2>
+
+  {% if error %}
+    <div class="alert alert-danger">{{ error }}</div>
+  {% endif %}
+
+  <form method="POST" action="/login">
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" name="email" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" name="password" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="role" class="form-label">Role</label>
+      <select name="role" class="form-select" required>
+        <option value="">Select Role</option>
+        <option value="guardian">Guardian</option>
+        <option value="doctor">Doctor</option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">Login</button>
+
+    <div class="text-center mt-3">
+      <a href="#">Forgot Password?</a>
+    </div>
+  </form>
+
+  <p class="text-center mt-3">Don't have an account? <a href="/register">Register here</a></p>
+</div>
+{% endblock %}

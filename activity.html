@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Choose an Activity</h2>
+  <div class="row text-center">
+    <div class="col-md-3 mb-4">
+      <div class="card activity-card">
+        <div class="card-body">
+          <h5 class="card-title">Memory Matching</h5>
+          <a href="/game/memory" class="btn btn-primary">Start Game</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 mb-4">
+      <div class="card activity-card">
+        <div class="card-body">
+          <h5 class="card-title">Simple Puzzle</h5>
+          <a href="/game/puzzle" class="btn btn-primary">Start Game</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 mb-4">
+      <div class="card activity-card">
+        <div class="card-body">
+          <h5 class="card-title">Letter Tracing</h5>
+          <a href="/game/tracing" class="btn btn-primary">Start Game</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 mb-4">
+      <div class="card activity-card">
+        <div class="card-body">
+          <h5 class="card-title">Breathing Exercise</h5>
+          <a href="/game/breathing" class="btn btn-primary">Start Game</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

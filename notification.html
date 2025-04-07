@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-center mb-4">🔔 Notifications</h2>
+
+  <!-- Missed Tasks Section -->
+  <div class="mb-4">
+    <h5>Missed Tasks</h5>
+    {% if missed_tasks %}
+      <ul class="list-group">
+        {% for task in missed_tasks %}
+          <li class="list-group-item">
+            <a href="{{ url_for('progress', child_id=task.child_id) }}">
+              {{ task.date }} - {{ task.activity_name }}
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="text-muted">No missed tasks.</p>
+    {% endif %}
+  </div>
+
+  <!-- Doctor Recommendations Section -->
+  <div class="mb-4">
+    <h5>Doctor's Recommendations</h5>
+    {% if doctor_notes %}
+      <ul class="list-group">
+        {% for rec in doctor_notes %}
+          <li class="list-group-item">
+            <a href="{{ url_for('progress', child_id=rec.child_id) }}">
+              {{ rec.date }} - {{ rec.comment[:50] }}...
+            </a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="text-muted">No new recommendations.</p>
+    {% endif %}
+  </div>
+
+  <!-- Back Button -->
+  <div class="text-center">
+    <a href="{{ url_for('guardian_dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
+  </div>
+</div>
+{% endblock %}

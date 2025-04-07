@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Your Children</h2>
+<ul class="list-group">
+  {% for child in children %}
+    <li class="list-group-item">
+      <strong>{{ child.name }}</strong> (Age: {{ child.age }}) - {{ child.diagnosis }}<br>
+      <small>Routine: {{ child.routine }}</small>
+    </li>
+  {% endfor %}
+</ul>
+{% endblock %}

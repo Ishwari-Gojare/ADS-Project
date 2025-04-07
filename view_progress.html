@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Child Progress</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/view_progress.css') }}">
+</head>
+<body>
+    <h2>Child Progress Overview</h2>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>Diagnosis</th>
+            <th>Completed Activities</th>
+            <th>Missed Activities</th>
+        </tr>
+        {% for child in progress_data %}
+        <tr>
+            <td>{{ child.name }}</td>
+            <td>{{ child.age }}</td>
+            <td>{{ child.diagnosis }}</td>
+            <td>{{ child.completed or 0 }}</td>
+            <td>{{ child.missed or 0 }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+  <h2 class="mb-4 text-center">Guardian Dashboard</h2>
+
+  <!-- Child Profile Section -->
+  <div class="card mb-4">
+    <div class="card-header bg-primary text-white">Child Profile</div>
+    <div class="card-body">
+      <p><strong>Name:</strong> {{ child.name }}</p>
+      <p><strong>Age:</strong> {{ child.age }}</p>
+      <p><strong>Diagnosis:</strong> {{ child.diagnosis }}</p>
+    </div>
+  </div>
+  
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h3>Welcome, Guardian</h3>
+    <a href="{{ url_for('notifications') }}" class="btn btn-warning">
+      🔔 Notifications
+    </a>
+  </div>
+  
+
+  <!-- Daily Activity Status -->
+  <div class="card mb-4">
+    <div class="card-header bg-success text-white">Daily Activity Status</div>
+    <div class="card-body">
+      <p>Status: 
+        {% if activity_status == 'completed' %}
+          ✅ Completed
+        {% else %}
+          ❌ Missed
+        {% endif %}
+      </p>
+    </div>
+  </div>
+
+  <!-- Schedule Section -->
+  <div class="card mb-4">
+    <div class="card-header bg-info text-white">Upcoming Schedule</div>
+    <div class="card-body">
+      <ul class="list-group">
+        {% for task in schedule %}
+        <li class="list-group-item">{{ task }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <!-- Doctor Recommendations -->
+  <div class="card mb-4">
+    <div class="card-header bg-warning">Doctor Recommendations</div>
+    <div class="card-body">
+      {% if recommendations %}
+        <ul>
+          {% for rec in recommendations %}
+          <li>{{ rec }}</li>
+          {% endfor %}
+        </ul>
+      {% else %}
+        <p>No recommendations yet.</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Navigation Buttons -->
+  <div class="d-flex justify-content-around mt-4">
+    <a href="/progress" class="btn btn-outline-primary">View Progress</a>
+    <a href="/activity" class="btn btn-outline-success">Start Activity</a>
+    <a href="/messages" class="btn btn-outline-secondary">Consult Doctor</a>
+  </div>
+</div>
+{% endblock %}

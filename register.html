@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-container mt-5">
+  <h2 class="text-center mb-4">Register</h2>
+
+  {% if error %}
+    <div class="alert alert-danger">{{ error }}</div>
+  {% endif %}
+
+  <form method="POST" action="/register" id="register-form">
+    <div class="mb-3">
+      <label for="role" class="form-label">Select Role</label>
+      <select name="role" id="role" class="form-select" required onchange="toggleFields()">
+        <option value="">Choose your role</option>
+        <option value="guardian">Guardian</option>
+        <option value="doctor">Doctor</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label>Name</label>
+      <input type="text" name="name" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label>Email</label>
+      <input type="email" name="email" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label>Password</label>
+      <input type="password" name="password" class="form-control" required>
+    </div>
+
+    <!-- Guardian Fields -->
+    <div id="guardian-fields" style="display: none;">
+      <div class="mb-3">
+        <label>Child's Name</label>
+        <input type="text" name="child_name" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label>Child's Age</label>
+        <input type="number" name="child_age" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label>Diagnosis</label>
+        <input type="text" name="diagnosis" class="form-control">
+      </div>
+    </div>
+
+    <!-- Doctor Fields -->
+    <div id="doctor-fields" style="display: none;">
+      <div class="mb-3">
+        <label>Specialization</label>
+        <input type="text" name="specialization" class="form-control">
+      </div>
+      <div class="mb-3">
+        <label>Hospital Name</label>
+        <input type="text" name="hospital" class="form-control">
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100">Register</button>
+
+    <p class="text-center mt-3">Already have an account? <a href="/login">Login here</a></p>
+  </form>
+</div>
+
+<script>
+  function toggleFields() {
+    const role = document.getElementById('role').value;
+    document.getElementById('guardian-fields').style.display = role === 'guardian' ? 'block' : 'none';
+    document.getElementById('doctor-fields').style.display = role === 'doctor' ? 'block' : 'none';
+  }
+</script>
+{% endblock %}

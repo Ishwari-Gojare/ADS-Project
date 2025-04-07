@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Add Child</h2>
+<form method="POST">
+  <label>Name</label>
+  <input type="text" name="name" required>
+
+  <label>Age</label>
+  <input type="number" name="age" required>
+
+  <label>Diagnosis</label>
+  <input type="text" name="diagnosis" required>
+
+  <label>Routine</label>
+  <textarea name="routine" rows="3"></textarea>
+
+  <button type="submit">Save</button>
+</form>
+{% endblock %}

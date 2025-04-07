@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Consultation & Messaging</h2>
+  
+  <div class="card mb-4">
+    <div class="card-header">Conversation</div>
+    <div class="card-body message-list" id="messageList">
+      {% for message in messages %}
+        <div class="mb-2">
+          <strong>{{ message.sender_role.capitalize() }}:</strong>
+          <span>{{ message.content }}</span>
+          <small class="text-muted float-end">{{ message.timestamp }}</small>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <form method="POST" action="{{ url_for('messaging') }}">
+    <div class="input-group">
+      <input type="text" name="message" class="form-control" placeholder="Type your message..." required>
+      <button type="submit" class="btn btn-primary">Send</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-center mb-4">🏅 Rewards & Motivation</h2>
+
+  <!-- Stickers & Badges -->
+  <div class="row text-center mb-4">
+    <h4>You've Earned:</h4>
+    <div class="col-6 col-md-3 mb-3">
+      <img src="{{ url_for('static', filename='images/star.png') }}" alt="Star" width="80">
+      <p>Gold Star</p>
+    </div>
+    <div class="col-6 col-md-3 mb-3">
+      <img src="{{ url_for('static', filename='images/badge.png') }}" alt="Badge" width="80">
+      <p>Achievement Badge</p>
+    </div>
+    <!-- Add more badges/stickers as needed -->
+  </div>
+
+  <!-- Encouraging Messages -->
+  <div class="alert alert-success text-center">
+    🌟 Great job completing your activities! Keep up the good work!
+  </div>
+
+  <!-- Optional Leaderboard -->
+  {% if leaderboard %}
+  <h5 class="mt-4 text-center">Top Performers</h5>
+  <table class="table table-striped mt-2">
+    <thead>
+      <tr>
+        <th>Rank</th>
+        <th>Name</th>
+        <th>Points</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for entry in leaderboard %}
+      <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ entry.name }}</td>
+        <td>{{ entry.points }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+
+  <!-- Back Button -->
+  <div class="text-center mt-4">
+    <a href="{{ url_for('guardian_dashboard') }}" class="btn btn-secondary">Back to Dashboard</a>
+  </div>
+</div>
+{% endblock %}

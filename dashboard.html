@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-4">
+  <h2 class="text-center">Welcome to ASD Care Dashboard</h2>
+
+  <div class="row mt-5">
+    <div class="col-md-6 mb-4">
+      <div class="card">
+        <div class="card-body text-center">
+          <h5 class="card-title">Guardian Panel</h5>
+          <a href="/guardian" class="btn btn-primary w-100">Go to Guardian Dashboard</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+      <div class="card">
+        <div class="card-body text-center">
+          <h5 class="card-title">Doctor Panel</h5>
+          <a href="/doctor" class="btn btn-success w-100">Go to Doctor Dashboard</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+      <div class="card">
+        <div class="card-body text-center">
+          <h5 class="card-title">Activity Module</h5>
+          <a href="/activities" class="btn btn-info w-100">Start Daily Activities</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+      <div class="card">
+        <div class="card-body text-center">
+          <h5 class="card-title">Progress & Reports</h5>
+          <a href="/progress" class="btn btn-warning w-100">View Progress</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+      <div class="card">
+        <div class="card-body text-center">
+          <h5 class="card-title">Messages</h5>
+          <a href="/messages" class="btn btn-dark w-100">Chat with Doctor/Guardian</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+      <div class="card">
+        <div class="card-body text-center">
+          <h5 class="card-title">Reward System</h5>
+          <a href="/rewards" class="btn btn-secondary w-100">Earn Rewards</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Child Progress Report</h2>
+
+  <!-- Chart Section with data attributes -->
+  <canvas id="activityChart" width="400" height="200"
+          data-completed="{{ completed }}"
+          data-missed="{{ missed }}"></canvas>
+
+  <!-- Summary -->
+  <div class="mt-4">
+    <h5>Daily Activity Summary</h5>
+    <p><strong>Completed:</strong> {{ completed }}</p>
+    <p><strong>Missed:</strong> {{ missed }}</p>
+  </div>
+
+  <!-- Doctor Recommendations -->
+  {% if recommendations %}
+    <div class="mt-4">
+      <h5>Doctor's Comments & Recommendations</h5>
+      <ul class="list-group">
+        {% for rec in recommendations %}
+          <li class="list-group-item">{{ rec.comment }} <br><small class="text-muted">- {{ rec.date }}</small></li>
+        {% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+  <!-- Buttons -->
+  <div class="mt-4 d-flex gap-2">
+    <a href="/messages/{{ guardian_id }}" class="btn btn-outline-primary">Consult Doctor</a>
+    <a href="/download_report/{{ child_id }}" class="btn btn-outline-danger">Download Report</a>
+  </div>
+</div>
+
+<!-- Chart.js CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<!-- Link to external JS -->
+<script src="{{ url_for('static', filename='js/progress_chart.js') }}"></script>
+{% endblock %}
